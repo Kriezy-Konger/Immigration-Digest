@@ -1,0 +1,103 @@
+sources:
+  # USCIS - Primary immigration authority
+  - id: uscis_news
+    name: "USCIS News & Alerts"
+    url: "https://www.uscis.gov/newsroom/news-releases"
+    type: rss
+    feed_url: "https://www.uscis.gov/feeds/allNewsAlerts.xml"
+    priority: critical
+    tags: [forms, fees, policy, enforcement]
+
+  - id: uscis_policy
+    name: "USCIS Policy Manual Updates"
+    url: "https://www.uscis.gov/policy-manual"
+    type: rss
+    feed_url: "https://www.uscis.gov/feeds/policyManualUpdates.xml"
+    priority: critical
+    tags: [policy, h1b, i9, green_card]
+
+  - id: uscis_forms
+    name: "USCIS Form Updates"
+    url: "https://www.uscis.gov/forms/all-forms"
+    type: scrape
+    scrape_selector: "table.views-table"
+    priority: critical
+    tags: [forms, i9, i140, i485]
+
+  # Department of Labor
+  - id: dol_whd
+    name: "DOL Wage & Hour Division - Immigration"
+    url: "https://www.dol.gov/agencies/whd/immigration"
+    type: rss
+    feed_url: "https://www.dol.gov/rss/releases.xml"
+    priority: high
+    tags: [lca, h1b, prevailing_wage, enforcement]
+
+  - id: dol_oflc
+    name: "DOL OFLC - Labor Certification"
+    url: "https://flag.dol.gov/wage-data/wage-search"
+    type: scrape
+    scrape_selector: "div.announcements"
+    priority: high
+    tags: [perm, lca, prevailing_wage]
+
+  # Department of State
+  - id: dos_visa_bulletin
+    name: "State Dept Visa Bulletin (Monthly)"
+    url: "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+    type: scrape
+    scrape_selector: "div.tsg-rwd-main-copy-body"
+    priority: critical
+    tags: [visa_bulletin, priority_dates, green_card]
+
+  - id: dos_news
+    name: "State Dept Travel & Visa News"
+    url: "https://www.state.gov"
+    type: rss
+    feed_url: "https://www.state.gov/rss-feeds/"
+    priority: medium
+    tags: [visa, travel, embassy]
+
+  # ICE / HSI
+  - id: ice_newsroom
+    name: "ICE Newsroom - Employer Enforcement"
+    url: "https://www.ice.gov/newsroom"
+    type: rss
+    feed_url: "https://www.ice.gov/features/ERO-2024"
+    priority: high
+    tags: [i9_audit, enforcement, e_verify]
+
+  # Federal Register - Immigration Rules
+  - id: federal_register_immigration
+    name: "Federal Register - Immigration Rules"
+    url: "https://www.federalregister.gov/documents/search"
+    type: api
+    api_url: "https://www.federalregister.gov/api/v1/documents.json"
+    api_params:
+      conditions[agencies][]: "department-of-homeland-security"
+      conditions[agencies][]: "executive-office-for-immigration-review"
+      conditions[type][]: "Rule"
+      conditions[type][]: "Proposed Rule"
+      conditions[type][]: "Notice"
+      per_page: 20
+      order: newest
+    priority: critical
+    tags: [regulations, proposed_rules, final_rules]
+
+  # E-Verify
+  - id: everify_news
+    name: "E-Verify News & Updates"
+    url: "https://www.e-verify.gov/about-e-verify/whats-new"
+    type: scrape
+    scrape_selector: "div.view-content"
+    priority: high
+    tags: [e_verify, i9, employment_eligibility]
+
+  # AILA (American Immigration Lawyers Association) - Public alerts
+  - id: aila_practice_alerts
+    name: "AILA Practice Alerts (Public)"
+    url: "https://www.aila.org/practice-resources/practice-alerts"
+    type: scrape
+    scrape_selector: "div.listing-item"
+    priority: medium
+    tags: [practice_tips, alerts, processing_times]

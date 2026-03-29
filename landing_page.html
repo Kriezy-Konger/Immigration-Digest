@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immigration Compliance Daily — For HR Teams</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+         color: #1a1a1a; background: #fff; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center;
+        padding: 16px 48px; border-bottom: 1px solid #e5e7eb; }
+  .logo { font-weight: 700; font-size: 16px; color: #1e3a5f; }
+  .nav-cta { background: #1e3a5f; color: #fff; padding: 8px 20px;
+             border-radius: 6px; text-decoration: none; font-size: 14px;
+             font-weight: 600; }
+
+  /* HERO */
+  .hero { max-width: 720px; margin: 80px auto; padding: 0 24px; text-align: center; }
+  .badge { display: inline-block; background: #ebf8ff; color: #2b6cb0;
+           font-size: 12px; font-weight: 700; letter-spacing: .5px;
+           padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
+           text-transform: uppercase; }
+  h1 { font-size: 46px; font-weight: 800; line-height: 1.15;
+       color: #1a1a1a; margin-bottom: 20px; }
+  h1 span { color: #1e3a5f; }
+  .subhead { font-size: 19px; color: #4a5568; line-height: 1.6;
+             max-width: 560px; margin: 0 auto 40px; }
+
+  /* CTA FORM */
+  .cta-box { background: #f7fafc; border: 1px solid #e2e8f0;
+             border-radius: 12px; padding: 36px; max-width: 520px; margin: 0 auto 48px; }
+  .cta-box p { font-size: 14px; color: #718096; margin-bottom: 20px; }
+  .input-row { display: flex; gap: 10px; }
+  .input-row input { flex: 1; padding: 12px 16px; border: 1px solid #cbd5e0;
+                     border-radius: 6px; font-size: 15px; outline: none; }
+  .input-row input:focus { border-color: #1e3a5f; }
+  .input-row button { background: #1e3a5f; color: #fff; border: none;
+                      padding: 12px 24px; border-radius: 6px; font-size: 15px;
+                      font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .trial-note { font-size: 12px; color: #a0aec0; margin-top: 12px; }
+
+  /* PAIN POINTS */
+  .pain { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; }
+  .pain h2 { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 40px; }
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .pain-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; }
+  .pain-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .pain-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .pain-card p { font-size: 14px; color: #4a5568; line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .how { background: #1e3a5f; color: #fff; padding: 80px 24px; text-align: center; }
+  .how h2 { font-size: 28px; font-weight: 700; margin-bottom: 48px; }
+  .steps { display: flex; justify-content: center; gap: 40px; max-width: 800px;
+           margin: 0 auto; flex-wrap: wrap; }
+  .step { max-width: 200px; }
+  .step-num { width: 44px; height: 44px; background: rgba(255,255,255,.15);
+              border-radius: 50%; display: flex; align-items: center;
+              justify-content: center; font-size: 18px; font-weight: 800;
+              margin: 0 auto 14px; }
+  .step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: #a8c4e0; line-height: 1.6; }
+
+  /* PRICING */
+  .pricing { max-width: 520px; margin: 80px auto; padding: 0 24px; text-align: center; }
+  .pricing h2 { font-size: 28px; font-weight: 700; margin-bottom: 40px; }
+  .price-card { border: 2px solid #1e3a5f; border-radius: 12px; padding: 40px; }
+  .price-amount { font-size: 52px; font-weight: 800; color: #1e3a5f; }
+  .price-amount span { font-size: 20px; color: #718096; font-weight: 400; }
+  .price-desc { color: #4a5568; margin: 12px 0 28px; }
+  .price-features { text-align: left; margin-bottom: 32px; }
+  .price-features li { font-size: 15px; padding: 8px 0; border-bottom: 1px solid #f0f4f8;
+                       list-style: none; display: flex; gap: 10px; align-items: center; }
+  .price-features li:last-child { border: none; }
+  .price-btn { display: block; background: #1e3a5f; color: #fff; padding: 16px;
+               border-radius: 8px; font-size: 16px; font-weight: 700;
+               text-decoration: none; }
+  .price-trial { font-size: 13px; color: #718096; margin-top: 12px; }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 40px; color: #a0aec0; font-size: 13px;
+           border-top: 1px solid #e5e7eb; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 32px; }
+    .pain-grid { grid-template-columns: 1fr; }
+    .steps { gap: 24px; }
+    nav { padding: 16px 20px; }
+    .input-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">🇺🇸 Immigration Compliance Daily</span>
+  <a href="#pricing" class="nav-cta">Start Free Trial</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">For HR Teams &amp; Operations Leaders</div>
+  <h1>Never miss a <span>US immigration</span> deadline again.</h1>
+  <p class="subhead">
+    Daily alerts on USCIS, DOL, and ICE changes — written in plain English 
+    with clear action steps. Built for HR managers, not lawyers.
+  </p>
+  <div class="cta-box">
+    <p>Join 200+ HR teams staying ahead of immigration changes:</p>
+    <div class="input-row">
+      <input type="email" placeholder="your@company.com" />
+      <button>Start Free Trial</button>
+    </div>
+    <p class="trial-note">✓ 30 days free &nbsp;·&nbsp; ✓ No credit card &nbsp;·&nbsp; ✓ Cancel anytime</p>
+  </div>
+</section>
+
+<section class="pain">
+  <h2>Does this sound familiar?</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">😰</div>
+      <h3>Wrong I-9 form, $2,500 fine</h3>
+      <p>USCIS releases new form versions with little notice. Using the old one after the deadline is an automatic violation.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">📅</div>
+      <h3>H-1B deadlines are unforgiving</h3>
+      <p>Miss a premium processing window or a fee change by a day and you're relying on manual corrections and legal fees.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🔍</div>
+      <h3>ICE audit priorities shift constantly</h3>
+      <p>Enforcement focus changes every few months. Your I-9s need to be current-compliant, not just historically correct.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">💸</div>
+      <h3>Outside counsel is expensive</h3>
+      <p>$400/hour attorney rates for monitoring news that's free on government websites — if you know where to look.</p>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <h2>How Immigration Compliance Daily works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>We watch everything</h3>
+      <p>USCIS, DOL, ICE, State Dept, Federal Register — monitored daily, automatically.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>AI filters the noise</h3>
+      <p>Only changes that actually affect US employers with foreign workers reach your inbox.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Plain English + action steps</h3>
+      <p>No legalese. Every alert tells you what changed and exactly what your team should do.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Only when it matters</h3>
+      <p>Quiet days get no email. You only hear from us when something actually changed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <h2>Simple, transparent pricing</h2>
+  <div class="price-card">
+    <div class="price-amount">$99<span>/month</span></div>
+    <p class="price-desc">Per company. Unlimited HR team members.</p>
+    <ul class="price-features">
+      <li>✅ Daily alerts on all major immigration sources</li>
+      <li>✅ Plain-English summaries with action items</li>
+      <li>✅ Urgency flags (Action Required / Monitor / FYI)</li>
+      <li>✅ Deadline reminders built in</li>
+      <li>✅ Searchable archive of past alerts</li>
+      <li>✅ Cancel anytime, no contracts</li>
+    </ul>
+    <a href="YOUR_STRIPE_LINK" class="price-btn">Start 30-Day Free Trial →</a>
+    <p class="price-trial">No credit card required for trial.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Immigration Compliance Daily is a news aggregation service, not legal advice.</p>
+  <p style="margin-top:8px">© 2026 · <a href="mailto:hello@yourdomain.com" style="color:#718096">hello@yourdomain.com</a></p>
+</footer>
+
+</body>
+</html>
